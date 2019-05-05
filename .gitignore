@@ -2,3 +2,11 @@
 .vs/hihoCoder/v16/.suo
 *.db
 *.ipch
+*.opendb
+*.log
+*.tlog
+*.obj
+*.idb
+*.pdb
+*.exe
+*.ilk
