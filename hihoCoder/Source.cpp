@@ -12,14 +12,14 @@
 using namespace std;
 
 void S1014();
+void S1015();
 int hiho253();
 
 int main()
 {
 	//printf("Hello hicoCoder!!");
 	//S1014();
-	int ans = hiho253();
-	printf("%d", ans);
+	S1015();
 	return 0;
 }
 
@@ -71,6 +71,57 @@ void S1014()
 			printf("%d\n", cur->cnt);
 		else
 			printf("0\n");
+	}
+}
+
+
+void S1015()
+{
+	int N;
+	cin >> N;
+	string s1, s2;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> s1 >> s2;
+		int n1 = s1.size();
+		int n2 = s2.size();
+		vector<int>next(n1+1);
+		{
+			//getnext()
+			next[0] = -1;
+			int j = 0;
+			int k = -1;
+			while (j < n1)
+			{
+				if (k==-1||s1[k] == s1[j])
+				{
+					next[++j] = ++k;
+				}
+				else
+					k = next[k];
+
+			}
+
+		}
+		int i2 = 0;
+		int j2 = 0;
+		int ans = 0;
+		while (i2 < n1 && j2 < n2)
+		{
+			if (i2==-1||s1[i2] == s2[j2])
+			{
+				i2++; j2++;
+			}
+			else
+				i2 = next[i2];
+
+			if (i2 == n1)
+			{
+				ans++;
+				i2 = next[i2];
+			}
+		}
+		printf("%d\n", ans);
 	}
 }
 
