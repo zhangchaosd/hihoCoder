@@ -14,12 +14,13 @@ using namespace std;
 void S1014();
 void S1015();
 int hiho253();
+void hiho254();
 
 int main()
 {
 	//printf("Hello hicoCoder!!");
 	//S1014();
-	S1015();
+	hiho254();
 	return 0;
 }
 
@@ -206,4 +207,63 @@ int hiho253()
 	return ans253;
 }
 
+void hiho254()
+{
+	int T;
+	cin >> T;
+	int N;
+	while (T--)
+	{
+		long long s1 = 0, s2 = 0, s3 = 0, s4 = 0, t;
+		cin >> N;
+		while (N--)
+		{
+			cin >> t;
+			if (t > s1)
+			{
+				if (t > s2)
+				{
+					if (t > s3)
+					{
+						if (t > s4)
+						{
+							s1 = s2;
+							s2 = s3;
+							s3 = s4;
+							s4 = t;
+						}
+						else
+						{
+							s1 = s2;
+							s2 = s3;
+							s3 = t;
+						}
+					}
+					else
+					{
+						s1 = s2;
+						s2 = t;
+					}
+				}
+				else
+				{
+					s1 = t;
+				}
+			}
+		}
+		long long ans = 0, tans = 0;
+		long long ss[4] = { s1,s2,s3,s4 };
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = i + 1; j < 4; j++)
+			{
+				tans = ss[i] * ss[j] * (ss[i] & ss[j]);
+				if (tans > ans)
+					ans = tans;
+			}
+		}
+		cout << ans << endl;
+	}
+
+}
 
