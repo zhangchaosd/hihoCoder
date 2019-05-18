@@ -15,12 +15,13 @@ void S1014();
 void S1015();
 int hiho253();
 void hiho254();
+void hiho255();
 
 int main()
 {
 	//printf("Hello hicoCoder!!");
 	//S1014();
-	hiho254();
+	hiho255();
 	return 0;
 }
 
@@ -267,3 +268,43 @@ void hiho254()
 
 }
 
+
+int ccc(int t)
+{
+	return t * (t - 1) / 2;
+}
+
+void hiho255()
+{
+	int N;
+	cin >> N;
+	int r, w;
+	//set<int>s1,s2;
+	map<int, int>s1, s2, s3, s4;
+	while (N--)
+	{
+		cin >> r >> w;
+		s1[r]++;
+		s2[w]++;
+		s3[r - w]++;
+		s4[r + w]++;
+	}
+	int ans = 0;
+	for (auto it : s1)
+	{
+		ans += ccc(it.second);
+	}
+	for (auto it : s2)
+	{
+		ans += ccc(it.second);
+	}
+	for (auto it : s3)
+	{
+		ans += ccc(it.second);
+	}
+	for (auto it : s4)
+	{
+		ans += ccc(it.second);
+	}
+	printf("%d", ans);
+}
